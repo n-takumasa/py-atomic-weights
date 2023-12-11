@@ -6,7 +6,7 @@
 ## Usage
 
 ```
-pip install git+https://github.com/n-takumasa/py-atomic-weights
+pip install atomic-weights
 ```
 
 ```py
