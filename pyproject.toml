@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "atomic-weights"
+version = "2021.0.0"
+description = "Standard atomic weights of the elements"
+license = "CC0-1.0"
+authors = ["Takumasa Nakamura <n.takumasa@gmail.com>"]
+readme = "README.md"
+repository = "https://github.com/n-takumasa/py-atomic-weights"
+classifiers = [
+    "Topic :: Scientific/Engineering :: Chemistry",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+
+[tool.poetry.dependencies]
+python = ">=3.8"
+
+[tool.poetry.group.dev.dependencies]
+pandas = {extras = ["html"], version = "*"}
+polars = {extras = ["pandas"], version = "*"}
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
