@@ -12,7 +12,12 @@ table = (
         # r"\s+" : spaces between digits
         # r"\(\d+\)" : uncertainty
         # r"\[|\]" : radioactive elements
-        pl.col("Atomic Wt").str.replace_all(r"(\s+|\(\d+\)|\[|\])", ""),
+        pl.col("Atomic Wt")
+        .str.replace_all(r"(\s+|\(\d+(\.\d+)?\)|\[|\])", "")
+        # NOTE: 2023 Phosphorus
+        .str.replace(r"^\(", "")
+        # NOTE: 2023 Bromine
+        .str.replace(r"_$", "")
     )
 )
 
@@ -35,11 +40,12 @@ code_decimal = (
 )
 
 cwd = Path(__file__).parent
+dest = cwd / "src" / "atomic_weights"
 
 with (cwd / "pyproject.toml").open("rb") as f:
-    version = tomllib.load(f)["tool"]["poetry"]["version"]
+    version = tomllib.load(f)["project"]["version"]
 
-with (cwd / "atomic_weights/__init__.py").open("w") as f:
+with (dest / "__init__.py").open("w") as f:
     f.write(
         f"""
 # ruff: noqa
@@ -52,7 +58,7 @@ from . import _decimal as decimal
 """[1:]
     )
 
-with (cwd / "atomic_weights/_decimal.py").open("w") as f:
+with (dest / "_decimal.py").open("w") as f:
     f.write(
         f"""
 # ruff: noqa
