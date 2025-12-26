@@ -4,7 +4,7 @@ build-backend = "uv_build"
 
 [project]
 name = "atomic-weights"
-version = "2021.0.0"
+version = "2023.0.0"
 description = "Standard atomic weights of the elements"
 readme = "README.md"
 requires-python = ">=3.8"
