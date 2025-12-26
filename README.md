@@ -20,3 +20,26 @@ pip install atomic-weights
 >>> type(atw.decimal.Fe)
 <class 'decimal.Decimal'>
 ```
+
+```py
+import re
+import unicodedata
+
+import atomic_weights as atw
+
+
+def molecular_mass(x: str) -> float:
+    """formula -> g/mol"""
+
+    x = unicodedata.normalize("NFKC", x)
+    y = 0
+    for elem, num in re.findall(r"(?:([A-Z][a-z]*)(\d+)?)", x):
+        num = int(num) if num else 1
+        y += num * getattr(atw, elem)
+    return y
+
+molecular_mass("Al2O3")
+# 101.9600768
+molecular_mass("Al₂O₃")
+# 101.9600768
+```
