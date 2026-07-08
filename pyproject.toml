@@ -1,14 +1,14 @@
 [build-system]
-requires = ["uv_build>=0.9.18,<0.10.0"]
+requires = ["uv_build>=0.11.28,<0.12"]
 build-backend = "uv_build"
 
 [project]
 name = "atomic-weights"
-version = "2023.0.0"
+version = "2023.1.0"
 description = "Standard atomic weights of the elements"
 readme = "README.md"
 requires-python = ">=3.8"
-license = "CC0-1.0"
+license = "0BSD"
 authors = [
     { name = "Takumasa Nakamura", email = "n.takumasa@gmail.com" }
 ]
